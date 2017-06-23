@@ -77,5 +77,14 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>
+    <script>
+        $('#add-new-group').hide();
+        $('#add-group-btn').click(function(){
+            $('#add-new-group').slideToggle(function(){
+                $('#new-group').focus();
+            });
+            return false;
+        });
+    </script>
 </body>
 </html>
