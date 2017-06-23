@@ -67,7 +67,7 @@
                             <div class="form-group" id="add-new-group">
                                 <div class="col-md-offset-3 col-md-8">
                                     <div class="input-group">
-                                        <input type="text" name="new_group" id="new-group" class="form-control">
+                                        <input type="text" name="new_group" id="new-group" class="form-control" placeholder="Tambah grup baru">
                                         <span class="input-group-btn">
                                             <a href="#" class="btn btn-default">
                                                 <i class="fa fa-fw fa-check"></i>
