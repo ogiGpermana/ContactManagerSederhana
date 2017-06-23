@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 </head>
@@ -35,7 +36,7 @@
                     </a>
                 </div>
                     <div class="nav navbar-left navbar-btn addcontact">
-                        <a href="" class="btn btn-default"><i class="fa fa-fw fa-plus"></i>Add Contact</a>
+                        <a href="" class="btn btn-default"><i class="fa fa-fw fa-plus"></i>Tambah Kontak</a>
                     </div>
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
@@ -78,5 +79,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>
 </body>
 </html>
