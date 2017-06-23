@@ -76,6 +76,7 @@
                 <div class="links">
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Home</a>
+                        <p>Selamat datang di aplikasi Contact Manager <strong>{{ Auth::user()->name }}</strong></p>
                     @else
                         <a href="{{ url('/login') }}">Login</a>
                         <a href="{{ url('/register') }}">Register</a>
