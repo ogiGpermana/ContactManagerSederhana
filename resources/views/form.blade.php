@@ -61,8 +61,20 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href="" class="btn btn-default">Tambah Grup</a>
+                                    <a href="" id="add-group-btn" class="btn btn-default btn-block">Tambah Grup</a>
                                 </div>
+                            </div>
+                            <div class="form-group" id="add-new-group">
+                                <div class="col-md-offset-3 col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="new_group" id="new-group" class="form-control">
+                                        <span class="input-group-btn">
+                                            <a href="#" class="btn btn-default">
+                                                <i class="fa fa-fw fa-check"></i>
+                                            </a>
+                                        </span>
+                                    </div>    
+                                </div>    
                             </div>  
                         </div>
                         <div class="col-md-4">
@@ -86,7 +98,7 @@
                         <div class="row">
                             <div class="col-md-offset-3 col-md-6">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="" class="btn btn-default">Batal</a>
+                                <a href="{{('/home')}}" class="btn btn-default">Batal</a>
                             </div>
                         </div>
                     </div>
