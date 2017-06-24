@@ -21,7 +21,6 @@
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
@@ -34,18 +33,23 @@
                     <a class="navbar-brand text-uppercase" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    @if (! Auth::guest())
+                    <div class="input-group">
+                        <form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Telusuri Kontak..." id="query" name="query" value="">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><span class="fa fa-fw fa-search"></span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    @endif
                 </div>
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
+                        @if (! Auth::guest())
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -70,8 +74,23 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+    <div class="container">
+        <div class="row">
+                @if (! Auth::guest())
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">Semua Kontak <span class="badge">10</span></a>
+                    <a href="#" class="list-group-item">Keluarga <span class="badge">4</span></a>
+                    <a href="#" class="list-group-item">Teman <span class="badge">3</span></a>
+                    <a href="#" class="list-group-item">Lain lain <span class="badge">3</span></a>
+                </div>
+            </div>
+                @endif
+            <div class="col-md-9">
+                @yield('content')        
+            </div>
+        </div>
+    </div>
     </div>
 
     <!-- Scripts -->
