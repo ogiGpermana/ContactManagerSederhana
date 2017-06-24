@@ -79,15 +79,16 @@
                 @if (! Auth::guest())
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">Semua Kontak <span class="badge">10</span></a>
-                    <a href="#" class="list-group-item">Keluarga <span class="badge">4</span></a>
-                    <a href="#" class="list-group-item">Teman <span class="badge">3</span></a>
-                    <a href="#" class="list-group-item">Lain lain <span class="badge">3</span></a>
+                  <?php $selected_group = \Request::get("group_id") ?>
+                    <a href="{{ route('contact') }}" class="list-group-item {{empty($selected_group)?'active':''}}">Semua Kontak <span class="badge">{{ ContactManager\Contact::count() }}</span></a>
+                    @foreach(ContactManager\Group::all() as $group)
+                    <a href="{{ route('contact', ['group_id' => $group->id]) }}" class="list-group-item {{$selected_group==$group->id?'active':''}} ">{{ $group->name }} <span class="badge">{{ $group->contacts->count() }}</span></a>
+                    @endforeach
                 </div>
             </div>
                 @endif
             <div class="col-md-9">
-                @yield('content')        
+                @yield('content')
             </div>
         </div>
     </div>
