@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="addcontact">
-    <a href="{{ route('form') }}" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i>Tambah Kontak</a>
+    <a href="{{ route('create') }}" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i>Tambah Kontak</a>
 </div><br>
 <div class="panel panel-default">
 <table class="table">
