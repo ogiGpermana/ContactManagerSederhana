@@ -88,6 +88,11 @@
             </div>
                 @endif
             <div class="col-md-9">
+                @if(session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+                @endif
                 @yield('content')
             </div>
         </div>
