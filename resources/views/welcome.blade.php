@@ -75,7 +75,7 @@
                 @if (Route::has('login'))
                 <div class="links">
                     @if (Auth::check())
-                        <a href="{{ url('/contact') }}">Home</a>
+                        <a href="{{ url('contacts') }}">Home</a>
                         <p>Selamat datang di aplikasi Contact Manager <strong>{{ Auth::user()->name }}</strong></p>
                     @else
                         <a href="{{ url('/login') }}">Login</a>

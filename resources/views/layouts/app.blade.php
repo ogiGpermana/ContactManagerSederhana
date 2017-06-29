@@ -78,14 +78,26 @@
         <div class="row">
                 @if (! Auth::guest())
             <div class="col-md-3">
-                <div class="list-group">
-                  <?php $selected_group = \Request::get("group_id") ?>
-                    <a href="{{ route('contact') }}" class="list-group-item {{empty($selected_group)?'active':''}}">Semua Kontak <span class="badge">{{ ContactManager\Contact::count() }}</span></a>
-                    @foreach(ContactManager\Group::all() as $group)
-                    <a href="{{ route('contact', ['group_id' => $group->id]) }}" class="list-group-item {{$selected_group==$group->id?'active':''}} ">{{ $group->name }} <span class="badge">{{ $group->contacts->count() }}</span></a>
-                    @endforeach
+                <div class="col-xs-12">
+                    <div class="list-group">
+                    <?php $selected_group = \Request::get("group_id") ?>
+                        <a href="{{ route('contacts.index') }}" class="list-group-item {{empty($selected_group)?'active':''}}">Semua Kontak <span class="badge">{{ ContactManager\Contact::count() }}</span></a>
+                        @foreach(ContactManager\Group::all() as $group)
+                        <a href="{{ route('contacts.index', ['group_id' => $group->id]) }}" class="list-group-item {{$selected_group==$group->id?'active':''}} ">{{ $group->name }} <span class="badge">{{ $group->contacts->count() }}</span></a>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-fw fa-trash"></i> Kotak Sampah</div>
+                        <div class="panel-body">
+                        <ul>
+                            <li>Test <span class="badge">5</span></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>     
                 @endif
             <div class="col-md-9">
                 @if(session('message'))

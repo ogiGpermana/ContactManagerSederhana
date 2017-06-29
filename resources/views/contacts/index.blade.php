@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="addcontact">
-    <a href="{{ route('create') }}" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i>Tambah Kontak</a>
+    <a href="{{ route('contacts.create') }}" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i>Tambah Kontak</a>
 </div><br>
 <div class="panel panel-default">
 <table class="table">
@@ -11,7 +11,7 @@
         <td>
             <div class="media">
                 <div class="media-left">
-                    <a href=""><img src="http://placehold.it/100x100" alt="" class="media-object"></a>
+                    <a href=""><img src="{{ Avatar::create($contact->name)->toBase64() }}" class="media-object"/></a>
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">{{ $contact->name }}</h4>
@@ -24,8 +24,8 @@
         </td>
         <td width="100" class="middle">
             <div>
-                <a href="" class="btn btn-circle btn-default btn-xs" title="edit"><i class="fa fa-fw fa-edit"></i></a>
-                <a href="" class="btn btn-circle btn-danger btn-xs" title="edit"><i class="fa fa-fw fa-remove"></i></a>
+                <a href="{{route('contacts.edit', ['id' => $contact->id])}}" class="btn btn-circle btn-default btn-xs" title="edit"><i class="fa fa-fw fa-edit"></i></a>
+                <a href="" class="btn btn-circle btn-danger btn-xs" title="edit"><i class="fa fa-fw fa-trash"></i></a>
             </div>
         </td>
     </tr>

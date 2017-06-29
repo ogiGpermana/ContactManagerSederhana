@@ -8,6 +8,12 @@ use ContactManager\Group;
 
 class ContactsController extends Controller
 {
+    private $rules = [
+            'name' => ['required', 'min:5'],
+            'email' => ['required', 'unique:users', 'email'],
+            'company' => ['required']
+        ];
+
     /**
      * Create a new controller instance.
      *
@@ -19,7 +25,7 @@ class ContactsController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,37 +33,101 @@ class ContactsController extends Controller
     {
         if (($group_id = $request->get("group_id")))
         {
-          $contacts = Contact::where('group_id', $group_id)->oderBy('id', 'desc')->paginate(5);
+          $contacts = Contact::where('group_id', $group_id)->orderBy('id', 'desc')->paginate(5);
         }
         else {
-          $contacts = Contact::oderBy('id', 'desc')->paginate(5);
+          $contacts = Contact::orderBy('id', 'desc')->paginate(5);
         }
 
         return view('contacts.index', compact('contacts'));
     }
 
-    public function create()
+    private function getGroups()
     {
         $groups = [];
         foreach(Group::all() as $group)
         {
             $groups[$group->id] = $group->name;
         }
+
+        return $groups;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+   public function create()
+    {
+        $groups = $this->getGroups();
         return view('contacts.create', compact('groups'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $rules = [
-            'name' => ['required', 'min:5'],
-            'email' => ['required', 'email'],
-            'company' => ['required']
-        ];
-
-        $this->validate($request, $rules);
+        $this->validate($request, $this->rules);
 
         Contact::create($request->all());
 
-        return redirect("contact")->with("message", "Kontak berhasil di simpan!");
+        return redirect("contacts")->with("message", "Kontak berhasil di simpan!");
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $groups = $this->getGroups();
+        $contact = Contact::find($id);
+        return view('contacts.edit', compact('groups', 'contact'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, $this->rules);
+
+        $contact = Contact::find($id);
+        $contact->update($request->all());
+
+        return redirect("contacts")->with("message", "Kontak berhasil di update!");
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
