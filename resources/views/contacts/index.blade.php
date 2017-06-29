@@ -24,8 +24,12 @@
         </td>
         <td width="100" class="middle">
             <div>
+            {!! Form::open(['route' => ['contacts.destroy', $contact->id], 'method' => 'DELETE']) !!}
                 <a href="{{route('contacts.edit', ['id' => $contact->id])}}" class="btn btn-circle btn-default btn-xs" title="edit"><i class="fa fa-fw fa-edit"></i></a>
-                <a href="" class="btn btn-circle btn-danger btn-xs" title="edit"><i class="fa fa-fw fa-trash"></i></a>
+                <button type="submit" class="btn btn-circle btn-danger btn-xs" title="delete" onclick="return confirm('Anda yakin ingin hapus kontak?')">
+                    <i class="fa fa-fw fa-trash"></i>
+                </button>
+            {!! Form::close() !!}
             </div>
         </td>
     </tr>

@@ -128,6 +128,9 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::find($id);
+        $contact->delete();
+
+        return redirect("contacts")->with("message", "Kontak berhasil di hapus!");
     }
 }
