@@ -11,8 +11,11 @@ class ContactsController extends Controller
     private $rules = [
             'name' => ['required', 'min:5'],
             'email' => ['required', 'unique:users', 'email'],
-            'company' => ['required']
+            'company' => ['required'],
+            'photo' => ['mimes:jpg,png,gif,bmp']
         ];
+
+    private $upload_dir;
 
     /**
      * Create a new controller instance.
@@ -21,6 +24,7 @@ class ContactsController extends Controller
      */
     public function __construct()
     {
+        $this->upload_dir = base_path() . '/public/uploads';
         $this->middleware('auth');
     }
 
@@ -92,7 +96,7 @@ class ContactsController extends Controller
 
         // Pindahkan file ke server
 
-        $destination = base_path() . '/public/uploads';
+        $destination = $this->upload_dir;
 
         $request->file('photo')->move($destination, $photo);
 
@@ -153,6 +157,12 @@ class ContactsController extends Controller
     public function destroy($id)
     {
         $contact = Contact::find($id);
+
+        if (!is_null($contact->photo)) {
+          $file_path = $this->upload_dir . '/' . $contact->photo;
+          if (file_exists($file_path)) unlink($file_path);
+        }
+
         $contact->delete();
 
         return redirect("contacts")->with("message", "Kontak berhasil di hapus!");
