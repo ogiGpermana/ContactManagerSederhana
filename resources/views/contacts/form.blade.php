@@ -47,7 +47,7 @@
                         {!! Form::select("group_id", $groups, null, ['class' => 'form-control']) !!}
                     </div>
                     <div class="col-md-3">
-                        <a href="" id="add-group-btn" class="btn btn-default btn-block">Tambah Grup</a>
+                        <a href="#" id="add-group-btn" class="btn btn-default btn-block">Tambah Grup</a>
                     </div>
                 </div>
                 <div class="form-group" id="add-new-group">
@@ -55,7 +55,7 @@
                         <div class="input-group">
                             <input type="text" name="new_group" id="new-group" class="form-control" placeholder="Tambah grup baru">
                             <span class="input-group-btn">
-                                <a href="#" class="btn btn-default">
+                                <a href="#" class="btn btn-default" id="add-new-btn">
                                     <i class="fa fa-fw fa-check"></i>
                                 </a>
                             </span>
@@ -90,3 +90,59 @@
         </div>
     </div>
 </div>
+
+@section('form-script')
+<script>
+    $('#add-new-group').hide();
+    $('#add-group-btn').click(function(){
+        $('#add-new-group').slideToggle(function(){
+            $('#new-group').focus();
+        });
+        return false;
+    });
+
+    $('#add-new-btn').click(function () {
+      var newGroup = $('#new-group');
+      $.ajax({
+        url: "{{ route('groups.store') }}",
+        method: 'post',
+        data: {
+          name: $("#new-group").val(),
+          _token: $("input[name=_token]").val()
+        },
+        success: function(response){
+          if (response.success == true) {
+            // Hapus pesan error
+            var inputGroup = newGroup.closest('.input-group');
+            inputGroup.removeClass('has-error');
+            inputGroup.next('.text-danger').remove();
+
+            // Tambah grup baru ke dalam daftar pilihan
+            $("select[name=group_id]")
+            .append($("<option></option>")
+            .attr("value", response.group.id)
+            .attr("selected", true)
+            .text(response.group.name));
+
+            // Hapus teks
+            newGroup.val("");
+          }
+        },
+        error: function(xhr){
+          var errors = xhr.responseJSON;
+          var error = errors.name[0];
+
+          if (error) {
+            var inputGroup = newGroup
+                              .closest('.input-group');
+
+            inputGroup.next('.text-danger').remove();
+
+            inputGroup.addClass('has-error')
+            .after('<p class="text-danger">' + error + '</p>');
+          }
+        }
+      });
+    });
+</script>
+@endsection
