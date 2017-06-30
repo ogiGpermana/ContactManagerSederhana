@@ -8,10 +8,88 @@
 
 ![alt text](https://lh3.googleusercontent.com/tcSQxaHLoxN2vQ_boiPR5dqnYyB_R3zvJgwVD2bW-dmEAMkgJ9Eg5cL6baHeMmlXmsgXVDoBjxY8Rri-63J-5HR8-B3jVwggH3khaWBKjBLgowiF39kWiJt6dCo1fTyJ8ZGO "Contact Manager")
 
->>Halaman daftar kontak yang tersimpan dengan double karakter avatar
+Aplikasi ini menggunakan library atau pustaka laravolt/avatar sebagai pengganti default foto, untuk konfigurasinya ada di dalam folder ``config/avatar.php``, kurang lebih filenya seperti dibawah ini:
 
-![alt text](https://lh3.googleusercontent.com/BCAiUTSAb7TDerZbUf8HrIvb1rvpXNuoZOH3LjKMHqkQEN6hzxmNgy3Kw1fH4vois2snLGPXFJctjj36mpm2C9m9CEbBbhRaVQaoYXUne5JHVozwj4PZl7Kr3wi-WR0AfcZN "Contact Manager")
+```php
+<?php
+/*
+ * Set specific configuration variables here
+ */
+return [
 
->>Halaman form input data baru kontak
+    /*
+    |--------------------------------------------------------------------------
+    | Image Driver
+    |--------------------------------------------------------------------------
+    | Avatar use Intervention Image library to process image.
+    | Meanwhile, Intervention Image supports "GD Library" and "Imagick" to process images
+    | internally. You may choose one of them according to your PHP
+    | configuration. By default PHP's "GD Library" implementation is used.
+    |
+    | Supported: "gd", "imagick"
+    |
+    */
+    'driver'    => 'gd',
 
-![alt text](https://lh3.googleusercontent.com/ddvKaTLpUd8TAPyV3Np140Pf4eN_oTdrh9ryvhp9jla4w_flhVOL1OyTo4F68RSKvjkN0wipz0lomxjEXO8XXYru138NuKGY1fLFUw0-O7KDvGz7c3cKdFLgj1IjKUv7tC9W "Contact Manager")
+    // Whether all characters supplied must be replaced with their closest ASCII counterparts
+    'ascii'    => true,
+
+    // Image shape: circle or square
+    'shape' => 'circle',
+
+    // Image width, in pixel
+    'width'    => 100,
+
+    // Image height, in pixel
+    'height'   => 100,
+
+    // Number of characters used as initials. If name consists of single word, the first N character will be used
+    'chars'    => 1,
+
+    // font size
+    'fontSize' => 48,
+
+    // convert initial letter in uppercase
+    'uppercase' => false,
+
+    // Fonts used to render text.
+    // If contains more than one fonts, randomly selected based on name supplied
+    // You can provide absolute path, path relative to folder resources/laravolt/avatar/fonts/, or mixed.
+    'fonts'    => ['OpenSans-Bold.ttf', 'rockwell.ttf'],
+
+    // List of foreground colors to be used, randomly selected based on name supplied
+    'foregrounds'   => [
+        '#FFFFFF',
+    ],
+
+    // List of background colors to be used, randomly selected based on name supplied
+    'backgrounds'   => [
+        '#f44336',
+        '#E91E63',
+        '#9C27B0',
+        '#673AB7',
+        '#3F51B5',
+        '#2196F3',
+        '#03A9F4',
+        '#00BCD4',
+        '#009688',
+        '#4CAF50',
+        '#8BC34A',
+        '#CDDC39',
+        '#FFC107',
+        '#FF9800',
+        '#FF5722',
+    ],
+
+    'border'    => [
+        'size'  => 1,
+
+        // border color, available value are:
+        // 'foreground' (same as foreground color)
+        // 'background' (same as background color)
+        // or any valid hex ('#aabbcc')
+        'color' => 'foreground',
+    ],
+];
+```
+Tinggal disesuaikan dengan kebutuhan
