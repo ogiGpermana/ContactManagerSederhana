@@ -15,6 +15,7 @@
     <link href="{{ asset('jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('jquery-ui/jquery-ui.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -34,10 +35,10 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
                     @if (! Auth::guest())
-                    <div class="input-group">
+                    <div class="input-group autocomplete">
                       {!! Form::open(['route' => 'contacts.index', 'method' => 'GET', 'class' => 'navbar-form', 'role' => 'search']) !!}
                             <div class="input-group">
-                              {!!  Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Telusuri Kontak...']) !!}
+                              {!!  Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Telusuri Kontak...', 'id' => 'term']) !!}
                                 <div class="input-group-btn">
                                     <button type="submit" class="btn btn-default"><span class="fa fa-fw fa-search"></span></button>
                                 </div>
@@ -114,6 +115,18 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>
+    <script src="{{ asset('jquery-ui/jquery-ui.js') }}"></script>
+    <script>
+      $(function(){
+        $("#term").autocomplete({
+          source: "{{ route('contacts.autocomplete') }}",
+          minLength: 2,
+          select: function(event, ui) {
+            $("#term").val(ui.item.value)
+          }
+        });
+      });
+    </script>
     <script>
         $('#add-new-group').hide();
         $('#add-group-btn').click(function(){

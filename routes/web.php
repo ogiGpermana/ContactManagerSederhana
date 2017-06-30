@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('contacts/autocomplete', 'ContactsController@autocomplete')->name('contacts.autocomplete');
 Route::resource('contacts', 'ContactsController');

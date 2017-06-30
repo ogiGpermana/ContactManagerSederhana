@@ -55,6 +55,34 @@ class ContactsController extends Controller
         return view('contacts.index', compact('contacts'));
     }
 
+    public function autocomplete(Request $request)
+    {
+      // Mencegah akses langsung melalui url
+      if ($request->ajax())
+      {
+        $contacts = Contact::where(function($query) use ($request){
+
+          // Filter berdasarkan kata yang di input
+          if (($term = $request->get('term'))) {
+            $query->orWhere('name', 'like', '%' . $term . '%');
+            $query->orWhere('email', 'like', '%' . $term . '%');
+            $query->orWhere('company', 'like', '%' . $term . '%');
+          }
+        })
+        ->orderBy('id', 'desc')
+        ->take(5)
+        ->get();
+
+        // Konversi ke JSON
+        $results = [];
+        foreach ($contacts as $contact) {
+          $results[] = ['id' => $contact->id, 'value' => $contact->name];
+        }
+
+        return response()->json($results);
+      }
+    }
+
     private function getGroups()
     {
         $groups = [];
