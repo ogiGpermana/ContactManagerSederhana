@@ -35,14 +35,14 @@
                     </a>
                     @if (! Auth::guest())
                     <div class="input-group">
-                        <form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
+                      {!! Form::open(['route' => 'contacts.index', 'method' => 'GET', 'class' => 'navbar-form', 'role' => 'search']) !!}
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Telusuri Kontak..." id="query" name="query" value="">
+                              {!!  Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Telusuri Kontak...']) !!}
                                 <div class="input-group-btn">
                                     <button type="submit" class="btn btn-default"><span class="fa fa-fw fa-search"></span></button>
                                 </div>
                             </div>
-                        </form>
+                      {!! Form::close() !!}
                     </div>
                     @endif
                 </div>
