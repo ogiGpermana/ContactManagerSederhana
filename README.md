@@ -2,7 +2,7 @@
 
 >>Halaman depan aplikasi pada saat dijalankan
 
-![alt text](https://lh3.googleusercontent.com/vC0QpMCtWBn0KkEl89S7TITCc0nUoyJmPSTru4UT8Q6zgLBhP9B-2Dwgza7saK1f1EGw3lp47PlMHBxgUwxmTNn2AbXpk6C0rmj8wi7RcKAhkijT0n-qTOmAh7iyHIiCl-6w "Contact Manager")
+![alt text](https://lh3.googleusercontent.com/Ox7Xjj0wBgQqs09qo4YyleZDS8mxN3PqexHp9N7A88n9cHmOuR-rxonohT3MjYmmvGk3P1GiAC1OQz9AfH6AUmcUKQTxCozoQlNoiyNn5ZW-Lyz6rBBNgscFPBpArTDLcgAs "Contact Manager")
 
 >>Halaman daftar kontak yang tersimpan dengan single karakter avatar
 
@@ -15,4 +15,3 @@
 >>Halaman form input data baru kontak
 
 ![alt text](https://lh3.googleusercontent.com/ddvKaTLpUd8TAPyV3Np140Pf4eN_oTdrh9ryvhp9jla4w_flhVOL1OyTo4F68RSKvjkN0wipz0lomxjEXO8XXYru138NuKGY1fLFUw0-O7KDvGz7c3cKdFLgj1IjKUv7tC9W "Contact Manager")
-

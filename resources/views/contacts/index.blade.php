@@ -11,7 +11,13 @@
         <td>
             <div class="media">
                 <div class="media-left">
-                    <a href=""><img src="{{ Avatar::create($contact->name)->toBase64() }}" class="media-object"/></a>
+                    <a href="">
+                      @if(!$contact->photo)
+                      <img src="{{ Avatar::create($contact->name)->toBase64() }}" class="media-object"/>
+                      @else
+                      {!! Html::image('/uploads/' . $contact->photo, $contact->name, ['class' => 'media-object', 'width' => 100, 'height' => 100]) !!}
+                      @endif
+                    </a>
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">{{ $contact->name }}</h4>

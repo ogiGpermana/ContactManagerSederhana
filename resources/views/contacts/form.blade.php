@@ -70,7 +70,7 @@
                     </div>
                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                     <div class="text-center">
-                        <span class="btn btn-default btn-file"><span class="fileinput-new">Pilih Foto</span><span class="fileinput-exists">Ganti</span><input type="file" name="..."></span>
+                        <span class="btn btn-default btn-file"><span class="fileinput-new">Pilih Foto</span><span class="fileinput-exists">Ganti{!! Form::file('photo') !!}</span><input type="file" name="..."></span>
                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Buang</a>
                     </div>
                 </div>

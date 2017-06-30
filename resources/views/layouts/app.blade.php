@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading"><i class="fa fa-fw fa-trash"></i> Kotak Sampah</div>
                         <div class="panel-body">
                         <ul>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-            </div>     
+            </div>
                 @endif
             <div class="col-md-9">
                 @if(session('message'))

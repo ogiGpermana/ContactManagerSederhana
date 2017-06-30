@@ -5,7 +5,7 @@
 <div class="panel-heading">
     <strong>Edit Kontak</strong>
 </div>
-{!! Form::model($contact, ['method' => 'PATCH', 'route' => ['contacts.update', $contact->id]]) !!}
+{!! Form::model($contact, ['files' => true, 'method' => 'PATCH', 'route' => ['contacts.update', $contact->id]]) !!}
  @include('contacts.form')
 {!! Form::close() !!}
 </div>

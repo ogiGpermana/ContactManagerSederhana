@@ -74,9 +74,33 @@ class ContactsController extends Controller
     {
         $this->validate($request, $this->rules);
 
-        Contact::create($request->all());
+        $data = $this->get_request($request);
+
+        Contact::create($data);
 
         return redirect("contacts")->with("message", "Kontak berhasil di simpan!");
+    }
+
+    private function get_request(Request $request)
+    {
+      $data = $request->all();
+
+      if ($request->hasFile('photo'))
+      {
+        // Mendapatkan nama file
+        $photo =  $request->file('photo')->getClientOriginalName();
+
+        // Pindahkan file ke server
+
+        $destination = base_path() . '/public/uploads';
+
+        $request->file('photo')->move($destination, $photo);
+
+
+        $data['photo'] = $photo;
+      }
+
+      return $data;
     }
 
     /**

@@ -5,7 +5,7 @@
 <div class="panel-heading">
     <strong>Tambah Kontak</strong>
 </div>
-{!! Form::open(['route' => 'contacts.store']) !!}
+{!! Form::open(['route' => 'contacts.store', 'files' => true]) !!}
 @include('contacts.form')
 {!! Form::close() !!}
 </div>

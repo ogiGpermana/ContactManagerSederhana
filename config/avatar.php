@@ -19,7 +19,7 @@ return [
     'driver'    => 'gd',
 
     // Whether all characters supplied must be replaced with their closest ASCII counterparts
-    'ascii'    => false,
+    'ascii'    => true,
 
     // Image shape: circle or square
     'shape' => 'circle',
