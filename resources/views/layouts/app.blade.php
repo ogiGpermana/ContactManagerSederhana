@@ -90,10 +90,11 @@
                 </div>
                 <div class="col-xs-12">
                     <div class="panel panel-primary">
-                        <div class="panel-heading"><i class="fa fa-fw fa-trash"></i> Kotak Sampah</div>
+                        <div class="panel-heading"><i class="fa fa-fw fa-wrench"></i> Pengaturan</div>
                         <div class="panel-body">
-                        <ul>
-                            <li>Test <span class="badge">5</span></li>
+                        <ul class="nav">
+                            <li><a href="#"><i class="fa fa-fw fa-user"></i> User</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-users"></i> Grup Kontak</a></li>
                         </ul>
                         </div>
                     </div>

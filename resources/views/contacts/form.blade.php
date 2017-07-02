@@ -68,9 +68,9 @@
                     <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
                         <img src="http://placehold.it/150x150" alt="Photo">
                     </div>
-                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
                     <div class="text-center">
-                        <span class="btn btn-default btn-file"><span class="fileinput-new">Pilih Foto</span><span class="fileinput-exists">Ganti{!! Form::file('photo') !!}</span><input type="file" name="..."></span>
+                        <span class="btn btn-default btn-file"><span class="fileinput-new">Pilih Foto</span><span class="fileinput-exists">Ganti{!! Form::file('photo') !!}</span>{!! Form::file('photo') !!}</span>
                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Buang</a>
                     </div>
                 </div>

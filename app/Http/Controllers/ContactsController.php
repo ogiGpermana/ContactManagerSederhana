@@ -12,7 +12,7 @@ class ContactsController extends Controller
             'name' => ['required', 'min:5'],
             'email' => ['required', 'unique:users', 'email'],
             'company' => ['required'],
-            'photo' => ['mimes:jpg,png,gif,bmp']
+            'photo' => ['mimes:jpeg,jpg,png | max:1000']
         ];
 
     private $upload_dir;
