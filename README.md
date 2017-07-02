@@ -6,7 +6,7 @@
 
 >>Penambahan fitur pencarian berdasarkan grup, email, perusahaan dan nama autocomplete
 
-![alt text](https://lh3.googleusercontent.com/919lGgh7qph0FRJX3f4YKRu0b7hoSbXvYBN4nz9Q1DhlQYBTBmSWOIFP5dlhUYcnLDa7qTjLuvRQye4iH7Id3sMECeN3GFS3sUvV4_Xohz3eTnDNeLpSPkusXGViF89vUJ0F"Contact Manager")
+![alt text](https://lh3.googleusercontent.com/919lGgh7qph0FRJX3f4YKRu0b7hoSbXvYBN4nz9Q1DhlQYBTBmSWOIFP5dlhUYcnLDa7qTjLuvRQye4iH7Id3sMECeN3GFS3sUvV4_Xohz3eTnDNeLpSPkusXGViF89vUJ0F "Contact Manager")
 
 Aplikasi ini menggunakan library atau pustaka laravolt/avatar sebagai pengganti default foto, untuk konfigurasinya ada di dalam folder ``config/avatar.php``, kurang lebih filenya seperti dibawah ini:
 
